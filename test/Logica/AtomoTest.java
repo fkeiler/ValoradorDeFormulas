@@ -13,4 +13,13 @@ class AtomoTest {
         a.atribuirValor(false);
         assertFalse(a.valor);
     }
+
+    @Test
+    void valorarWorksAsExpected() {
+        Atomo a = new Atomo("A");
+        a.valor = true;
+        assertTrue(a.valorar());
+        a.valor = false;
+        assertFalse(a.valorar());
+    }
 }
