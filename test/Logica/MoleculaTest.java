@@ -51,4 +51,36 @@ class MoleculaTest {
         Molecula allTrue = new Molecula(new alwaysTrue(), "OR", new alwaysTrue());
         assertTrue(allTrue.valorar());
     }
+
+    @Test
+    void valorarWorksOnIMPLIES() {
+        // F -> F === V
+        Molecula allFalse = new Molecula(new alwaysFalse(), "IMPLIES", new alwaysFalse());
+        assertTrue(allFalse.valorar());
+        // F -> V === V
+        Molecula falseLeft = new Molecula(new alwaysFalse(), "IMPLIES", new alwaysTrue());
+        assertTrue(falseLeft.valorar());
+        // V -> F === F
+        Molecula falseRight = new Molecula(new alwaysTrue(), "IMPLIES", new alwaysFalse());
+        assertFalse(falseRight.valorar());
+        // V -> V === V
+        Molecula allTrue = new Molecula(new alwaysTrue(), "IMPLIES", new alwaysTrue());
+        assertTrue(allTrue.valorar());
+    }
+
+    @Test
+    void valorarWorksOnIFF() {
+        // F <-> F === V
+        Molecula allFalse = new Molecula(new alwaysFalse(), "IFF", new alwaysFalse());
+        assertTrue(allFalse.valorar());
+        // F <-> V === F
+        Molecula falseLeft = new Molecula(new alwaysFalse(), "IFF", new alwaysTrue());
+        assertFalse(falseLeft.valorar());
+        // V <-> F === F
+        Molecula falseRight = new Molecula(new alwaysTrue(), "IFF", new alwaysFalse());
+        assertFalse(falseRight.valorar());
+        // V <-> V === V
+        Molecula allTrue = new Molecula(new alwaysTrue(), "IFF", new alwaysTrue());
+        assertTrue(allTrue.valorar());
+    }
 }
