@@ -83,4 +83,52 @@ class MoleculaTest {
         Molecula allTrue = new Molecula(new alwaysTrue(), "IFF", new alwaysTrue());
         assertTrue(allTrue.valorar());
     }
+
+    @Test
+    void valorarWorksOnXOR() {
+        // F ⊕ F = F
+        Molecula allFalse = new Molecula(new alwaysFalse(), "XOR", new alwaysFalse());
+        assertFalse(allFalse.valorar());
+        // F ⊕ V = V
+        Molecula falseLeft = new Molecula(new alwaysFalse(), "XOR", new alwaysTrue());
+        assertTrue(falseLeft.valorar());
+        // V ⊕ F = V
+        Molecula falseRight = new Molecula(new alwaysTrue(), "XOR", new alwaysFalse());
+        assertTrue(falseRight.valorar());
+        // V ⊕ V = F
+        Molecula allTrue = new Molecula(new alwaysTrue(), "XOR", new alwaysTrue());
+        assertFalse(allTrue.valorar());
+    }
+
+    @Test
+    void valorarWorksOnNAND() {
+        // F ⊼ F = V
+        Molecula allFalse = new Molecula(new alwaysFalse(), "NAND", new alwaysFalse());
+        assertTrue(allFalse.valorar());
+        // F ⊼ V = V
+        Molecula falseLeft = new Molecula(new alwaysFalse(), "NAND", new alwaysTrue());
+        assertTrue(falseLeft.valorar());
+        // V ⊼ F = V
+        Molecula falseRight = new Molecula(new alwaysTrue(), "NAND", new alwaysFalse());
+        assertTrue(falseRight.valorar());
+        // V ⊼ V = F
+        Molecula allTrue = new Molecula(new alwaysTrue(), "NAND", new alwaysTrue());
+        assertFalse(allTrue.valorar());
+    }
+
+    @Test
+    void valorarWorksOnNOR() {
+        // F ⊽ F = V
+        Molecula allFalse = new Molecula(new alwaysFalse(), "NOR", new alwaysFalse());
+        assertTrue(allFalse.valorar());
+        // F ⊽ V = F
+        Molecula falseLeft = new Molecula(new alwaysFalse(), "NOR", new alwaysTrue());
+        assertFalse(falseLeft.valorar());
+        // V ⊽ F = F
+        Molecula falseRight = new Molecula(new alwaysTrue(), "NOR", new alwaysFalse());
+        assertFalse(falseRight.valorar());
+        // V ⊽ V = F
+        Molecula allTrue = new Molecula(new alwaysTrue(), "NOR", new alwaysTrue());
+        assertFalse(allTrue.valorar());
+    }
 }
