@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.JanelaPrincipal">
+  <grid id="cbd77" binding="contentPane" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="48" y="54" width="688" height="458"/>
+    </constraints>
+    <properties/>
+    <border type="empty">
+      <size top="10" left="10" bottom="10" right="10"/>
+    </border>
+    <children>
+      <grid id="e3588" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="66ccf" class="javax.swing.JTextField" binding="formulaTextField">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag weightx="1.0" weighty="1.0"/>
+            </constraints>
+            <properties>
+              <text value="Fórmula"/>
+            </properties>
+          </component>
+          <component id="a2e2a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="1.0"/>
+            </constraints>
+            <properties>
+              <text value="&lt;html&gt;&#10;&#9;&lt;h1&gt;Dicionário&lt;/h1&gt;&#10;&#10;&#9;&lt;h2&gt;Símbolos&lt;/h2&gt;&#10; &#10;&#9;&lt;b&gt;NOT&lt;/b&gt;: não _, ¬&lt;br&gt;&#10;&#9;&lt;b&gt;AND&lt;/b&gt;: _ e _, ∧&lt;br&gt;&#10;&#9;&lt;b&gt;OR&lt;/b&gt;: _ ou _, ∨&lt;br&gt;&#10;&#10;&#9;&lt;b&gt;IMPLIES&lt;/b&gt;: Se _ então _, →&lt;br&gt;&#10;&#9;&lt;b&gt;IFF&lt;/b&gt;: _ se e somente se _, ↔&lt;br&gt;&#10;&#10;&#9;&lt;b&gt;NAND&lt;/b&gt;: Não _ e _, ⊼&lt;br&gt;&#10;&#9;&lt;b&gt;NOR&lt;/b&gt;: Nem _ nem _, ⊽&lt;br&gt;&#10;&#9;&#10;&#9;&lt;b&gt;XOR&lt;/b&gt;: Ou _ ou _, ⊕&lt;br&gt;&#10;&#10;&#9;&lt;h2&gt;Sintaxe&lt;/h2&gt;&#10;&#10;&#9;NOT(Exp)&lt;br&gt;&#10;&#9;(Exp1 OP Exp2)&lt;br&gt;&lt;br&gt;&#10;&#10;&#9;e.g.: (p IFF NOT((p OR q)))&#10;&#10;&lt;/html&gt;"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="9538f" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="1.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="e7465" class="javax.swing.JButton" binding="buttonOK">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="1.0"/>
+            </constraints>
+            <properties>
+              <text value="OK" noi18n="true"/>
+            </properties>
+          </component>
+          <component id="5723f" class="javax.swing.JButton" binding="buttonCancel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="1.0"/>
+            </constraints>
+            <properties>
+              <text value="Cancel"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
