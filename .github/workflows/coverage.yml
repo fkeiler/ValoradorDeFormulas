@@ -1,0 +1,30 @@
+name: Code Coverage with JoCoCo
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Test with Gradle
+        uses: gradle/gradle-build-action@bc3340afc5e3cc44f2321809ac090d731c13c514
+        with:
+          arguments: test
+      - name: Upload Code Coverage
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./build/reports/jacoco/test/jacocoTestReport.xml
+          fail_ci_if_error: true
+          verbose: true
