@@ -22,4 +22,18 @@ class AtomoTest {
         a.valor = false;
         assertFalse(a.valorar());
     }
+
+    @Test
+    void toStringWorksAsExpected() {
+        Atomo a = new Atomo("A");
+        String expected = "A";
+        assertEquals(expected, a.toString());
+    }
+
+    @Test
+    void toStringWorksWithUnicode() {
+        Atomo a = new Atomo("😀");
+        String expected = "😀";
+        assertEquals(expected, a.toString());
+    }
 }
