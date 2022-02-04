@@ -131,4 +131,53 @@ class MoleculaTest {
         Molecula allTrue = new Molecula(new alwaysTrue(), "NOR", new alwaysTrue());
         assertFalse(allTrue.valorar());
     }
+
+    @Test
+    void toStringWorksOnAND() {
+        Molecula m = new Molecula(new alwaysA(), "AND", new alwaysA());
+        String expected = "(A ∧ A)";
+        assertEquals(expected, m.toString());
+    }
+
+    @Test
+    void toStringWorksOnOR() {
+        Molecula m = new Molecula(new alwaysA(), "OR", new alwaysA());
+        String expected = "(A ∨ A)";
+        assertEquals(expected, m.toString());
+    }
+
+    @Test
+    void toStringWorksOnIMPLIES() {
+        Molecula m = new Molecula(new alwaysA(), "IMPLIES", new alwaysA());
+        String expected = "(A → A)";
+        assertEquals(expected, m.toString());
+    }
+
+    @Test
+    void toStringWorksOnIFF() {
+        Molecula m = new Molecula(new alwaysA(), "IFF", new alwaysA());
+        String expected = "(A ↔ A)";
+        assertEquals(expected, m.toString());
+    }
+
+    @Test
+    void toStringWorksOnXOR() {
+        Molecula m = new Molecula(new alwaysA(), "XOR", new alwaysA());
+        String expected = "(A ⊕ A)";
+        assertEquals(expected, m.toString());
+    }
+
+    @Test
+    void toStringWorksOnNAND() {
+        Molecula m = new Molecula(new alwaysA(), "NAND", new alwaysA());
+        String expected = "(A ⊼ A)";
+        assertEquals(expected, m.toString());
+    }
+
+    @Test
+    void toStringWorksOnNOR() {
+        Molecula m = new Molecula(new alwaysA(), "NOR", new alwaysA());
+        String expected = "(A ⊽ A)";
+        assertEquals(expected, m.toString());
+    }
 }
