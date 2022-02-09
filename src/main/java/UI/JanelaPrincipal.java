@@ -88,7 +88,7 @@ public class JanelaPrincipal extends JDialog {
     }
 
     // Conversão da String em um objeto proposição
-    private Proposicao interpretar(String s) {
+    public Proposicao interpretar(String s) {
         //Remove espaços na entrada
         s = s.trim();
 
