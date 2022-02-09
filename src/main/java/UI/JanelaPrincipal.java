@@ -16,6 +16,8 @@ public class JanelaPrincipal extends JDialog {
     private Map<String, Atomo> atomos;
 
     public JanelaPrincipal() {
+        this.atomos = new HashMap<>();
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -82,7 +84,6 @@ public class JanelaPrincipal extends JDialog {
         }
 
         // Geração da tabela verdade
-        this.atomos = new HashMap<>();
         new TabelaVerdade(interpretar(proposicaoRaw), new Vector(this.atomos.values()));
     }
 
