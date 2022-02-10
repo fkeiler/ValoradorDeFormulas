@@ -13,11 +13,8 @@ public class JanelaPrincipal extends JDialog {
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTextField formulaTextField;
-    private Map<String, Atomo> atomos;
 
     public JanelaPrincipal() {
-        this.atomos = new HashMap<>();
-
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -84,7 +81,7 @@ public class JanelaPrincipal extends JDialog {
         }
 
         // Geração da tabela verdade
-        new TabelaVerdade(interpretar(proposicaoRaw), new Vector(this.atomos.values()));
+        new TabelaVerdade(interpretar(proposicaoRaw), Atomo.getAll());
     }
 
     // Conversão da String em um objeto proposição
@@ -99,11 +96,7 @@ public class JanelaPrincipal extends JDialog {
 
         // Se não for negação tampouco estiver envolvido por parenteses, é atômica
         if (!s.startsWith("(") || !s.endsWith(")")) {
-            if (atomos.containsKey(s)) {
-                return atomos.get(s);
-            }
-            atomos.put(s, new Atomo(s));
-            return atomos.get(s);
+            return Atomo.fromString(s);
         }
 
         // Intepreta qualquer conectivo entre os parenteses principais

@@ -22,6 +22,8 @@ public class TabelaVerdade extends JDialog {
 
         //Definir função para salvar a tabela gerada
         salvarComoButton.addActionListener(e -> salvar(table1.getModel()));
+        // Reseta a lista de átomos, pois eles já foram extraidos para o Vector a
+        Atomo.resetAll();
 
         //Insere todas as combinações de valores para os atomos e seu resultado final
         double combinacoes = Math.pow(2, a.size());
