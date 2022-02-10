@@ -2,64 +2,58 @@ package Logica;
 
 public class Molecula implements Proposicao {
     Proposicao esquerda;
-    String conectivo;
+    Operador conectivo;
     Proposicao direita;
 
+    enum Operador {
+        AND, OR, XOR, IMPLIES, IFF, NAND, NOR
+    }
+
+    @Deprecated
     public Molecula(Proposicao e, String s, Proposicao d){
         this.esquerda = e;
-        this.conectivo = s;
+        this.conectivo = switch(s) {
+            case "AND" -> Operador.AND;
+            case "OR" -> Operador.OR;
+            case "XOR" -> Operador.XOR;
+            case "IMPLIES" -> Operador.IMPLIES;
+            case "IFF" -> Operador.IFF;
+            case "NAND" -> Operador.NAND;
+            case "NOR" -> Operador.NOR;
+            default -> null;
+        };
+        this.direita = d;
+    }
+
+    public Molecula(Proposicao e, Operador o, Proposicao d) {
+        this.esquerda = e;
+        this.conectivo = o;
         this.direita = d;
     }
 
     @Override
     public boolean valorar(){
-        if(conectivo == "AND")
-            return esquerda.valorar() & direita.valorar();
-
-        if(conectivo == "OR") //OR
-            return esquerda.valorar() | direita.valorar();
-
-        if(conectivo == "XOR") //XOR
-            return esquerda.valorar() ^ direita.valorar();
-
-        if(conectivo == "IMPLIES")
-            return !esquerda.valorar() | direita.valorar();
-
-        if(conectivo == "IFF")
-            return !(esquerda.valorar() ^ direita.valorar());
-
-        if(conectivo == "NAND")
-            return !direita.valorar() | !esquerda.valorar();
-
-        if(conectivo == "NOR")
-            return !(direita.valorar() | esquerda.valorar());
-
-        return false;
+        return switch (conectivo) {
+            case AND -> esquerda.valorar() & direita.valorar();
+            case OR -> esquerda.valorar() | direita.valorar();
+            case XOR -> esquerda.valorar() ^ direita.valorar();
+            case IMPLIES -> !esquerda.valorar() | direita.valorar();
+            case IFF -> esquerda.valorar() == direita.valorar();
+            case NAND -> !direita.valorar() | !esquerda.valorar();
+            case NOR -> !(direita.valorar() | esquerda.valorar());
+        };
     }
 
     @Override
     public String toString(){
-        if(this.conectivo == "AND") //AND
-            return "(" + esquerda.toString() + " ∧ " + direita.toString() + ")";
-
-        if(this.conectivo == "OR")
-            return "(" + esquerda.toString() + " ∨ " + direita.toString() + ")";
-
-        if(this.conectivo == "XOR")
-            return "(" + esquerda.toString() + " ⊕ " + direita.toString() + ")";
-
-        if(this.conectivo == "IMPLIES")
-            return "(" + esquerda.toString() + " → " + direita.toString() + ")";
-
-        if(this.conectivo == "IFF")
-            return "(" + esquerda.toString() + " ↔ " + direita.toString() + ")";
-
-        if(this.conectivo == "NAND")
-            return "(" + esquerda.toString() + " ⊼ " + direita.toString() + ")";
-
-        if(this.conectivo == "NOR")
-            return "(" + esquerda.toString() + " ⊽ " + direita.toString() + ")";
-
-        return "Molécula Inválida";
+        return switch (conectivo) {
+            case AND -> "(" + esquerda.toString() + " ∧ " + direita.toString() + ")";
+            case OR -> "(" + esquerda.toString() + " ∨ " + direita.toString() + ")";
+            case XOR -> "(" + esquerda.toString() + " ⊕ " + direita.toString() + ")";
+            case IMPLIES -> "(" + esquerda.toString() + " → " + direita.toString() + ")";
+            case IFF -> "(" + esquerda.toString() + " ↔ " + direita.toString() + ")";
+            case NAND -> "(" + esquerda.toString() + " ⊼ " + direita.toString() + ")";
+            case NOR -> "(" + esquerda.toString() + " ⊽ " + direita.toString() + ")";
+        };
     }
 }
